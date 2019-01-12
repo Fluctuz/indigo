@@ -1,15 +1,20 @@
 <nav class="{% if page.title == "Home" %}nav-home{% else %}nav{% endif %}">
     <ul class="list">
+
+
+
         {% if page.title != "Home" %}
             <li class="item">
-                <a class="link" href="{{ site.url }}/">Home</a>
+                <a class="link" href="{{ site.url }}/{{site.t[page.lang].link_home }}">{{site.t[page.lang].home}}</a>
             </li>
+
+            
         {% endif %}
 
         {% if site.blog == true %}
             {% if page.title != "Blog" %}
                 <li class="item">
-                    <a class="link" href="{{ site.url }}/blog">Blog</a>
+                    <a class="link" href="{{ site.url }}/{{site.t[page.lang].link_blog }}">{{site.t[page.lang].blog}}</a>
                 </li>
             {% endif %}
         {% endif %}
@@ -17,23 +22,45 @@
         {% if site.projects == true %}
             {% if page.title != "Projects" %}
                 <li class="item">
-                    <a class="link" href="{{ site.url }}/projects">Projects</a>
+                    <a class="link" href="{{ site.url }}/{{site.t[page.lang].link_projects }}">{{site.t[page.lang].projects}}</a>
                 </li>
             {% endif %}
         {% endif %}
-
-        {% if site.about == true %}
-            {% if page.title != "About" %}
-                <li class="item">
-                    <a class="link" href="{{ site.url }}/about">About</a>
-                </li>
-            {% endif %}
-        {% endif %}
-
+        
         {% if site.resume == true %}
             <li class="item">
                 <a class="link" href="{% if site.resume-external %}{{ site.resume-url }}{% else %}{{ site.url }}/{{ site.resume-url }}{% endif %}">Résumé</a>
             </li>
         {% endif %}
+
+        {% if site.about == true %}
+        {% if page.title != "About" %}
+            <li class="item">
+                <a class="link" href="{{ site.url }}/{{site.t[page.lang].link_about }}">{{site.t[page.lang].about}}</a>
+            </li>
+        {% endif %}
+    {% endif %}
+    
+    {% if page.title != "Home" %}
+      <li class="item">
+            <ul>
+                    {% assign posts=site.posts | where:"ref", page.ref | sort: 'lang' %}
+                    {% for post in posts %}
+                      <li style="display: inline">
+                        <a href="{{ post.url }}" class="{{ post.lang }}">{{ post.lang }}</a>
+                      </li>
+                    {% endfor %}
+                    
+                    {% assign pages=site.pages | where:"title", page.title | sort: 'lang' %}
+                    {% for page in pages %}
+                      <li style="display: inline">
+                        <a href="{{ page.url }}" class="{{ page.lang }}">{{ page.lang }}</a>
+                      </li>
+                    {% endfor %}
+            </ul>
+    </li>
+    {% endif %} 
+
+        
     </ul>
 </nav>

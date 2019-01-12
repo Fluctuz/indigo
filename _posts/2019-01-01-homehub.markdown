@@ -1,0 +1,83 @@
+---
+title: "HomeHub - kleiner hilfreicher Bildschirm"
+layout: post
+date: 2019-01-01 12:10
+tag:
+  - python
+  - raspberry_pi
+headerImage: false
+projects: true
+hidden: true # don't count this post in blog pagination
+description: "Dieses Projekt ermöglicht es, über ein kleines Display auf einem Raspberry Pi 3 auf verschiedene Apis zuzugreifen."
+category: project
+author: timondohnke
+externalLink: false
+lang: de
+ref: homehub
+---
+
+ <p style="text-align: center"><img src="/assets/images/project_homehub/timefinal.jpg" width="220" />
+</p>
+
+# HomeHub
+---
+
+Das Projekt ermöglicht es, über ein kleines Display auf einem Raspberry Pi 3 auf verschiedene Apis zuzugreifen. Das Display ist ein monochromes LCD mit 128x64 Pixel und besitzt 6 Tasten von[Pimoroni](https://shop.pimoroni.com/products/gfx-hat). Die Benutzeroberfläche besteht aus mehreren Bildschirmen, die jeweils die Informationen einer Api anzeigen und per Knopfdruck durchgeschaltet werden können.
+
+Die Bildschirme laufen auf einem separaten Thread, der durch einen Knopfdruck unterbrochen werden kann. Dadurch kann der Bildschirm-Thread die meiste Zeit schlafen, da die Apis nicht so oft neue Informationen liefern.
+
+Weiterhin ist es durch ein Flag möglich, die Ausgabe auf eine Tkinter (gui) Anwendung umzustellen. Dies kann nützlich sein, um die Anwendung auf einem PC zu testen.
+
+**Tkinter Anwendung:**
+   <p float="left">
+      <img src="/assets/images/project_homehub/gui_time.png" width="220" />
+      <img src="/assets/images/project_homehub/gui_spotify.png" width="220" /> 
+    </p>
+
+
+**Struktur der Projektdateien**
+
+Die Projektstruktur ermöglicht es, die Datenerfassung in einem Modul ("Api"-Ordner) und die Zeichnung der Bildschirme in einem anderen Modul ("Screens"-Ordner) zu trennen. Durch diese Designs ist es einfach, verschiedene Apis/Bildschirme hinzuzufügen, ohne den bestehenden Code zu ändern. Die Api-Schlüssel sind in der Datei config.json gespeichert.
+
+
+{% highlight raw %}
+HomeHub/
+├── Screens/
+│   ├── screen.py //abstarct class 
+│   ├── spotify_screen.py  
+│   ├── weather_screen.py
+│   		⋮
+├── Api/
+│   ├──config.json
+│   ├──spotify_api.py
+│   	 	⋮
+├── Screen_controller/
+├── Fonts/
+├── Assets/
+├── manager.py
+└── background_script.py
+{% endhighlight %}
+
+**Die verschiedenen Bildschirme:**
+
+ <p>Wetter- und Zeitanzeige:  &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; Spotify-Bildschirm (steuert die Wiedergabe / zeigt aktuellen Song an):
+ </p>
+
+   <p float="left">
+        <img src="/assets/images/project_homehub/timefinal.jpg" width="220" />
+        <img style="margin-left: 10%;" src="/assets/images/project_homehub/spotifyfinal.jpg" width="220" /> 
+    </p>
+
+
+  
+  <p>ToDo Liste mithilfe von der Todoist Api:&nbsp; &nbsp; &nbsp; Zeiterfassungsbildschirm durch Toggl:
+ </p>
+
+   <p float="left">
+        <img src="/assets/images/project_homehub/todoistfinal.jpg" width="220" />
+        <img style="margin-left: 10%;" src="/assets/images/project_homehub/togglfinal.jpg" width="220" /> 
+    </p>
+
+---
+
+Du kannst dir das Projekt auf meinem [Github](https://github.com/Fluctuz/HomeHub) anschauen.
