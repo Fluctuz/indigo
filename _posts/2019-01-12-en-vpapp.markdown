@@ -1,0 +1,42 @@
+---
+title: "A Flutter App for my schools substitution plan"
+layout: post
+date: 2019-01-12 13:11
+tag:
+  - flutter
+  - firebase
+  - raspberry_pi
+headerImage: false
+projects: true
+hidden: true # don't count this post in blog pagination
+description: "This app allows students to check the substitution plan"
+category: project
+author: timondohnke
+externalLink: false
+lang: en
+ref: vpapp
+---
+The app allows students of my school to access the substitution plan. Moreover they can get notified if one of their lessons is canceled.
+
+**Pictures of the App:**
+   <p float="left">
+      <img src="/assets/images/project_vpapp/app_all.png" width="180" />
+      <img src="/assets/images/project_vpapp/app_personalized.png" width="180" /> 
+      <img src="/assets/images/project_vpapp/app_annoucment.png" width="180" /> 
+    </p>
+
+Firstly the app is written with Flutter, Google’s mobile UI Framework, and divided into three main sections. The first section shows the whole substitution plan of the school. Where as the next one only displays the entries which affect the user of the app. The last one presents the announcements of the school for the current and following day. The navigation between the the sections is handled with a bottom navigation bar. Furthermore the information about the plan is fetched from a website and then parsed to a machine readable format.
+
+**Notification system:**
+
+ <p style="text-align: center"><img src="/assets/images/project_vpapp/en_notification_diagram.png" width="520" /></p>
+
+Notably is the notification system of the app, because it is probably the most complex part of the whole app. The notification system consists of three main parts: Node.js server running on my Raspberry Pi 3, Firebase Project and the Flutter app. 
+Firstly the Node.js checks periodically if the substitution plan has changed. In case of an update the plan gets parsed and written to a Firebase Database. As a result a Firebase Function, a small piece of code running on a server, is triggered. This Firebase Function compares the new and previous plan. Thus extracting the new entries, which are compared to a notifier list. The notifier list contains the timetable of the students, who provided it through the app. Finally a push notification with the details about the new entries is send to the affected students. Therefore allowing the students to quickly adjust to the new information.
+
+
+
+
+
+
+

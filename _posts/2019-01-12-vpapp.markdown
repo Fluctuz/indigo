@@ -1,0 +1,40 @@
+---
+title: "Eine Flutter App für den Vertretungsplan meiner Schule"
+layout: post
+date: 2019-01-12 13:11
+tag:
+  - flutter
+  - firebase
+  - raspberry_pi
+headerImage: false
+projects: true
+hidden: true # don't count this post in blog pagination
+description: "Diese App ermöglicht es den Schülern, den Vertretungsplan zu überprüfen."
+category: project
+author: timondohnke
+externalLink: false
+lang: de
+ref: vpapp
+---
+Die App ermöglicht es Schülern meiner Schule, auf den Vertretungsplan zuzugreifen. Außerdem können sie benachrichtigt werden, wenn eine ihrer Unterrichtsstunden ausfällt.
+
+**Bidler von der App:**
+   <p float="left">
+      <img src="/assets/images/project_vpapp/app_all.png" width="180" />
+      <img src="/assets/images/project_vpapp/app_personalized.png" width="180" /> 
+      <img src="/assets/images/project_vpapp/app_annoucment.png" width="180" /> 
+    </p>
+
+ Die App ist mit Flutter, dem mobilen UI-Framework von Google, geschrieben und in drei Hauptbereiche unterteilt. Der erste Bereich stellt den gesamten Vertretungsplan der Schule da. Wo der nächste nur die Einträge angezeigt, die den Benutzer der App betreffen. Der letzte zeigt die Ankündigungen der Schule für den aktuellen und folgenden Tag. Die Navigation zwischen den Abschnitten erfolgt über eine untere Navigationsleiste. Darüber hinaus werden die Informationen über den Plan von einer Website abgerufen und dann in ein maschinenlesbares Format geparst.
+
+**Benachrichtigungssystem:**
+
+ <p style="text-align: center"><img src="/assets/images/project_vpapp/notification_diagram.png" width="520" /></p>
+
+Bemerkenswert ist das Benachrichtigungssystem der App, denn es ist wahrscheinlich der komplexeste Teil der gesamten App. Das Benachrichtigungssystem besteht aus drei Hauptteilen: Node.js Server, der auf meinem Raspberry Pi 3 läuft, Firebase Projekt und der Flutter App. 
+Zunächst prüft der Node.js Server regelmäßig, ob sich der Vertretungsplan geändert hat. Im Falle eines Aktualisierung wird der Plan geparst und in die Firebase Datenbank geschrieben. Dadurch wird eine Firebase Function, ein kleines Stück Code, das auf einem Server läuft, ausgeführt. Diese Firebase Funktion vergleicht den neuen und vorherigen Plan. Dadurch werden die neuen Einträge ausgelesen, die mit einer Melderliste verglichen werden. Die Melderliste enthält den Zeitplan der Schüler, die ihn über die App zur Verfügung gestellt haben. Schließlich wird eine Push-Benachrichtigung mit den Details zu den neuen Einträgen an die betroffenen Schüler gesendet. So können sich die Schüler schnell auf die neuen Informationen einstellen.
+
+
+
+
+
