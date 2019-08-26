@@ -38,14 +38,14 @@ authors:
 
 
 # normal | large
-width: normal
+width: large
 
 
 
 t:
   en:
-    author_bio: A Student who loves Python and Flutter
-    bio: A Student who loves Python and Flutter
+    author_bio: Computer science student. I am interested Computer Security and Machine Learning.
+    bio: Computer science student. I am interested Computer Security and Machine Learning.
     home:  "Home"
     projects: "Projects"
     about: "About"
@@ -62,8 +62,8 @@ t:
     termsofuse: 'Terms of Use & Privacy Policy'
 
   de:
-    bio: Schüler, der Python und Flutter liebt
-    author_bio: Schüler, der Python und Flutter liebt
+    bio: 'Informatik Student. Meine Intressen: IT-Sicherheit, Maschinelles Lernen' 
+    author_bio: 'Informatik Student. Meine Intressen: IT-Sicherheit, Maschinelles Lernen'
     home:  "Übersicht"
     projects: "Projekte"
     about: "Über&nbsp;mich"

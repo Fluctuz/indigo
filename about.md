@@ -5,7 +5,7 @@ lang: en
 ---
 ![Profile Image]({{ site.url }}/{{ site.picture }})
 
-<p>My name is Timon Dohnke and I am attending the 12th grade of a grammar school near Hamburg, Germany. At the age of 14 I started programming Android apps in Java.</p>
+<p>My name is Timon Dohnke and I study Computer Science. At the age of 14 I started programming Android apps in Java.</p>
 
 <p>With the learned knowledge I developed an Android App, which informs me in case of a canceled lesson at my school. Furthermore I programmed a small screen for the Raspberry Pi 3 in Python, which is linked to different Apis (e.g. Spotify, Todoist, Toggl, Weather). I also added radio station support to the open source music player "Clay" and continue to work on other open source projects.</p>
 
